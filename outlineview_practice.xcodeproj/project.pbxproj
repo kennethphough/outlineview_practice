@@ -14,6 +14,7 @@
 		D40497781FC0F551003493B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40497761FC0F551003493B7 /* Main.storyboard */; };
 		D40497831FC0F551003493B7 /* outlineview_practiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D40497821FC0F551003493B7 /* outlineview_practiceTests.m */; };
 		D404978E1FC0F551003493B7 /* outlineview_practiceUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D404978D1FC0F551003493B7 /* outlineview_practiceUITests.m */; };
+		D45355791FC1666400D56480 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D45355781FC1666400D56480 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		D40497891FC0F551003493B7 /* outlineview_practiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = outlineview_practiceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D404978D1FC0F551003493B7 /* outlineview_practiceUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = outlineview_practiceUITests.m; sourceTree = "<group>"; };
 		D404978F1FC0F551003493B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D45355781FC1666400D56480 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		D404975F1FC0F551003493B7 = {
 			isa = PBXGroup;
 			children = (
+				D45355781FC1666400D56480 /* README.md */,
 				D404976A1FC0F551003493B7 /* outlineview_practice */,
 				D40497811FC0F551003493B7 /* outlineview_practiceTests */,
 				D404978C1FC0F551003493B7 /* outlineview_practiceUITests */,
@@ -274,6 +277,7 @@
 			files = (
 				D40497731FC0F551003493B7 /* ViewController.m in Sources */,
 				D40497701FC0F551003493B7 /* main.m in Sources */,
+				D45355791FC1666400D56480 /* README.md in Sources */,
 				D404976D1FC0F551003493B7 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
