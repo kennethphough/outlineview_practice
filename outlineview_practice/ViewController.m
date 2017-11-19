@@ -21,10 +21,12 @@
     
     [self.myOutlineView registerForDraggedTypes: [NSArray arrayWithObject: @"public.content"]];
     
+    // if unassignedGroup is null then instantiate it
     if (!self.unassignedGroup) {
         self.unassignedGroup = [[NSMutableDictionary alloc] initWithCapacity:0];
     }
     
+    // if myDataSource is null then instantiate it, and add default group called Unassigned
     if (!self.myDataSource) {
         [self.unassignedGroup setObject:@"Unassigned" forKey:@"groupName"];
         [self.unassignedGroup setObject:[[NSMutableArray alloc] initWithCapacity:0] forKey:@"children"];
@@ -32,6 +34,7 @@
     }
 }
 
+// delete-key function for removing samples or groups
 -(IBAction)delete:(id)sender
 {
     NSInteger index = [self.myDataSource indexOfObject:[self.myOutlineView itemAtRow:self.myOutlineView.selectedRow]];
@@ -54,6 +57,7 @@
     [self.myOutlineView reloadData];
 }
 
+// create item whether it be a sample or group and update NSOutlineView
 - (IBAction)createItem:(id)sender
 {
     // if the text field is empty, don't do anything
@@ -114,6 +118,7 @@
     // Update the view, if already loaded.
 }
 
+// return YES if item is expandable, i.e. is a group in this example
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item
 {
     if ([item isKindOfClass:[NSDictionary class]]) {
@@ -123,6 +128,7 @@
     }
 }
 
+// return the # of children, or rows for root.
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
 {
     
@@ -133,6 +139,7 @@
     return [[item objectForKey:@"children"] count];
 }
 
+// for each item return the object...if it's a child, then get the child object from NSDictionary and return that
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item
 {
     
@@ -156,9 +163,10 @@
 
 #pragma mark Drag & Drop
 
+// check if the item is draggable and store in pasteboard
 - (id<NSPasteboardWriting>)outlineView:(NSOutlineView *)outlineView pasteboardWriterForItem:(id)item
 {
-    // check if item is draggable kind
+    // check if item is draggable kind...in this example, groups are not draggable
     if (![item isKindOfClass:[NSString class]]) {
         return nil;
     }
@@ -169,6 +177,7 @@
     return pboardItem;
 }
 
+// if the index is a valid # and the item is not null, allow drag operation
 - (NSDragOperation)outlineView:(NSOutlineView *)outlineView validateDrop:(id<NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(NSInteger)index
 {
     BOOL canDrag = index >= 0 && item;
@@ -191,10 +200,12 @@
         if (childIndex > [[sourceGroup objectForKey:@"children"] count]) continue;
         else {
             [[sourceGroup objectForKey:@"children"] removeObjectAtIndex:childIndex];
+            // if source and target group are the same, decrement the index counter as we already removed that item
             if ([sourceGroup isEqualTo:item]) index--;
         }
     }
     
+    // insert object into target group group
     [[item objectForKey:@"children"] insertObject:identifier atIndex:index];
     
     [self.myOutlineView reloadData];
