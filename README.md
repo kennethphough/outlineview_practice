@@ -1,4 +1,4 @@
-https://travis-ci.org/kennethphough/outlineview_practice.svg?branch=master
+[![Build Status](https://travis-ci.org/kennethphough/outlineview_practice.svg?branch=master)](https://travis-ci.org/kennethphough/outlineview_practice)
 
 # outlineview_practice
 
